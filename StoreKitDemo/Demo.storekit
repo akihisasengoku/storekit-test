@@ -1,0 +1,64 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "3C410FF4",
+      "localizations" : [
+        {
+          "description" : "bbbbbbbbbbbbbbbbb",
+          "displayName" : "ケーキ",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "aaaaaaaaaaaaaaaaaaaaaa",
+          "displayName" : "aaaaaaaaaaaaa",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "com.ameba.consumable1",
+      "referenceName" : "ほげほげ",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "1238A8B9",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "まんが",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.ameba.consumable2",
+      "referenceName" : "com.ameba.consumable2",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "10",
+      "familyShareable" : false,
+      "internalID" : "182EA34A",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "差し入れ",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.ameba.consumable3",
+      "referenceName" : "ああああああ",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : true
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}
