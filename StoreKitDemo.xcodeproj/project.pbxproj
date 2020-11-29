@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B741D93C256BEBDF00ACEB74 /* StoreTransactionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741D93B256BEBDF00ACEB74 /* StoreTransactionProcessor.swift */; };
+		B741D93C256BEBDF00ACEB74 /* StorePaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741D93B256BEBDF00ACEB74 /* StorePaymentManager.swift */; };
 		B741D942256BEC6B00ACEB74 /* ValidateReceiptGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741D941256BEC6B00ACEB74 /* ValidateReceiptGateway.swift */; };
 		B741D95D256C80F200ACEB74 /* StorePaymentTransactionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741D95C256C80F200ACEB74 /* StorePaymentTransactionNotification.swift */; };
 		B7695E9C256BA0590048B52A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695E9B256BA0590048B52A /* AppDelegate.swift */; };
@@ -18,12 +18,11 @@
 		B7695EA8256BA05B0048B52A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7695EA6256BA05B0048B52A /* LaunchScreen.storyboard */; };
 		B7695EB3256BA05B0048B52A /* StoreKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EB2256BA05B0048B52A /* StoreKitDemoTests.swift */; };
 		B7695EBE256BA05B0048B52A /* StoreKitDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EBD256BA05B0048B52A /* StoreKitDemoUITests.swift */; };
-		B7695ECF256BA9480048B52A /* StoreProductsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695ECE256BA9480048B52A /* StoreProductsGateway.swift */; };
+		B7695ECF256BA9480048B52A /* StoreProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695ECE256BA9480048B52A /* StoreProductsRequest.swift */; };
 		B7695EE2256BB1620048B52A /* StorePaymentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EE1256BB1620048B52A /* StorePaymentError.swift */; };
-		B7695EE7256BB2560048B52A /* StorePaymentPurchaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EE6256BB2560048B52A /* StorePaymentPurchaseGateway.swift */; };
+		B7695EE7256BB2560048B52A /* StorePaymentTransactionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EE6256BB2560048B52A /* StorePaymentTransactionObserver.swift */; };
 		B7695EEF256BB9FF0048B52A /* StorePaymentTransactionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EEE256BB9FF0048B52A /* StorePaymentTransactionState.swift */; };
 		B7695EF7256BBBA60048B52A /* StoreDebugConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EF6256BBBA60048B52A /* StoreDebugConstants.swift */; };
-		B7695EFD256BC1040048B52A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695EFC256BC1040048B52A /* Persistence.swift */; };
 		B7695F12256BC83A0048B52A /* PurchasedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7695F10256BC83A0048B52A /* PurchasedViewController.swift */; };
 		B7695F13256BC83A0048B52A /* PurchasedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7695F11256BC83A0048B52A /* PurchasedViewController.xib */; };
 /* End PBXBuildFile section */
@@ -46,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B741D93B256BEBDF00ACEB74 /* StoreTransactionProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTransactionProcessor.swift; sourceTree = "<group>"; };
+		B741D93B256BEBDF00ACEB74 /* StorePaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentManager.swift; sourceTree = "<group>"; };
 		B741D941256BEC6B00ACEB74 /* ValidateReceiptGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateReceiptGateway.swift; sourceTree = "<group>"; };
 		B741D95C256C80F200ACEB74 /* StorePaymentTransactionNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentTransactionNotification.swift; sourceTree = "<group>"; };
 		B7695E98256BA0590048B52A /* StoreKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,12 +62,11 @@
 		B7695EB9256BA05B0048B52A /* StoreKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7695EBD256BA05B0048B52A /* StoreKitDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitDemoUITests.swift; sourceTree = "<group>"; };
 		B7695EBF256BA05B0048B52A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B7695ECE256BA9480048B52A /* StoreProductsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductsGateway.swift; sourceTree = "<group>"; };
+		B7695ECE256BA9480048B52A /* StoreProductsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductsRequest.swift; sourceTree = "<group>"; };
 		B7695EE1256BB1620048B52A /* StorePaymentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentError.swift; sourceTree = "<group>"; };
-		B7695EE6256BB2560048B52A /* StorePaymentPurchaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentPurchaseGateway.swift; sourceTree = "<group>"; };
+		B7695EE6256BB2560048B52A /* StorePaymentTransactionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentTransactionObserver.swift; sourceTree = "<group>"; };
 		B7695EEE256BB9FF0048B52A /* StorePaymentTransactionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePaymentTransactionState.swift; sourceTree = "<group>"; };
 		B7695EF6256BBBA60048B52A /* StoreDebugConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDebugConstants.swift; sourceTree = "<group>"; };
-		B7695EFC256BC1040048B52A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B7695F10256BC83A0048B52A /* PurchasedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedViewController.swift; sourceTree = "<group>"; };
 		B7695F11256BC83A0048B52A /* PurchasedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasedViewController.xib; sourceTree = "<group>"; };
 		B7695F21256BD3FE0048B52A /* Demo.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Demo.storekit; sourceTree = "<group>"; };
@@ -103,16 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				B741D941256BEC6B00ACEB74 /* ValidateReceiptGateway.swift */,
+				B741D95C256C80F200ACEB74 /* StorePaymentTransactionNotification.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		B741D952256BF3B500ACEB74 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B7695ECE256BA9480048B52A /* StoreProductsGateway.swift */,
-			);
-			path = Products;
 			sourceTree = "<group>";
 		};
 		B741D96D256C8BCC00ACEB74 /* Debugger */ = {
@@ -146,16 +137,16 @@
 		B7695E9A256BA0590048B52A /* StoreKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B7695EFB256BC0FB0048B52A /* Persistence */,
-				B741D940256BEC2F00ACEB74 /* API */,
-				B7695ED3256BAB810048B52A /* StorePayment */,
 				B7695E9B256BA0590048B52A /* AppDelegate.swift */,
-				B7695E9D256BA0590048B52A /* SceneDelegate.swift */,
-				B7695F07256BC7FD0048B52A /* ViewControllers */,
-				B7695EA4256BA05B0048B52A /* Assets.xcassets */,
 				B7695EA6256BA05B0048B52A /* LaunchScreen.storyboard */,
-				B7695F21256BD3FE0048B52A /* Demo.storekit */,
+				B7695E9D256BA0590048B52A /* SceneDelegate.swift */,
 				B7695EA9256BA05B0048B52A /* Info.plist */,
+				B7695F21256BD3FE0048B52A /* Demo.storekit */,
+				B7695EA4256BA05B0048B52A /* Assets.xcassets */,
+				B741D940256BEC2F00ACEB74 /* API */,
+				B741D96D256C8BCC00ACEB74 /* Debugger */,
+				B7695ED3256BAB810048B52A /* StorePayment */,
+				B7695F07256BC7FD0048B52A /* ViewControllers */,
 			);
 			path = StoreKitDemo;
 			sourceTree = "<group>";
@@ -181,23 +172,13 @@
 		B7695ED3256BAB810048B52A /* StorePayment */ = {
 			isa = PBXGroup;
 			children = (
-				B741D96D256C8BCC00ACEB74 /* Debugger */,
-				B741D952256BF3B500ACEB74 /* Products */,
 				B7695EE1256BB1620048B52A /* StorePaymentError.swift */,
-				B7695EE6256BB2560048B52A /* StorePaymentPurchaseGateway.swift */,
-				B741D95C256C80F200ACEB74 /* StorePaymentTransactionNotification.swift */,
+				B741D93B256BEBDF00ACEB74 /* StorePaymentManager.swift */,
+				B7695EE6256BB2560048B52A /* StorePaymentTransactionObserver.swift */,
 				B7695EEE256BB9FF0048B52A /* StorePaymentTransactionState.swift */,
-				B741D93B256BEBDF00ACEB74 /* StoreTransactionProcessor.swift */,
+				B7695ECE256BA9480048B52A /* StoreProductsRequest.swift */,
 			);
 			path = StorePayment;
-			sourceTree = "<group>";
-		};
-		B7695EFB256BC0FB0048B52A /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				B7695EFC256BC1040048B52A /* Persistence.swift */,
-			);
-			path = Persistence;
 			sourceTree = "<group>";
 		};
 		B7695F07256BC7FD0048B52A /* ViewControllers */ = {
@@ -342,15 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7695ECF256BA9480048B52A /* StoreProductsGateway.swift in Sources */,
+				B7695ECF256BA9480048B52A /* StoreProductsRequest.swift in Sources */,
 				B741D942256BEC6B00ACEB74 /* ValidateReceiptGateway.swift in Sources */,
 				B7695F12256BC83A0048B52A /* PurchasedViewController.swift in Sources */,
-				B7695EFD256BC1040048B52A /* Persistence.swift in Sources */,
 				B741D95D256C80F200ACEB74 /* StorePaymentTransactionNotification.swift in Sources */,
 				B7695EEF256BB9FF0048B52A /* StorePaymentTransactionState.swift in Sources */,
-				B741D93C256BEBDF00ACEB74 /* StoreTransactionProcessor.swift in Sources */,
+				B741D93C256BEBDF00ACEB74 /* StorePaymentManager.swift in Sources */,
 				B7695EA0256BA0590048B52A /* ViewController.swift in Sources */,
-				B7695EE7256BB2560048B52A /* StorePaymentPurchaseGateway.swift in Sources */,
+				B7695EE7256BB2560048B52A /* StorePaymentTransactionObserver.swift in Sources */,
 				B7695EE2256BB1620048B52A /* StorePaymentError.swift in Sources */,
 				B7695EF7256BBBA60048B52A /* StoreDebugConstants.swift in Sources */,
 				B7695E9C256BA0590048B52A /* AppDelegate.swift in Sources */,

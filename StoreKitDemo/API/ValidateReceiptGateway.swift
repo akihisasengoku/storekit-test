@@ -10,10 +10,11 @@ import StoreKit
 
 // レシートの検証を行う擬似クラス
 final class ValidateReceiptGateway {
-    func validate(transaction: SKPaymentTransaction, completion: @escaping (Result<Void, StorePaymentError>)->()) {
+
+    func validate(transaction: SKPaymentTransaction, completion: @escaping (Result<Void, Error>)->()) {
         guard StoreDebugConstants.isNetworkEnabled else {
             // レシート送信に失敗するケース
-            completion(.failure(StorePaymentError.sendReceiptError))
+            completion(.failure(ValidateReceiptError.sendReceiptError))
             return
         }
 
@@ -21,7 +22,7 @@ final class ValidateReceiptGateway {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // failed
             guard StoreDebugConstants.isResponseReceivabled else {
-                completion(.failure(StorePaymentError.receiveResponseError))
+                completion(.failure(ValidateReceiptError.receiveResponseError))
                 return
             }
 
@@ -29,8 +30,13 @@ final class ValidateReceiptGateway {
             completion(.success(()))
 
             // 状態管理用
-            Persistence.add(with: transaction)
+            StoreDebugConstants.add(with: transaction)
             NotificationCenter.default.postTransactionSucceeded()
         }
     }
+}
+
+enum ValidateReceiptError: Error {
+    case sendReceiptError
+    case receiveResponseError
 }

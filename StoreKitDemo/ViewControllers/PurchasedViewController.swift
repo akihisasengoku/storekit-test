@@ -23,11 +23,11 @@ class PurchasedViewController: UIViewController {
 
 extension PurchasedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Persistence.transactions.count
+        StoreDebugConstants.transactions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let transaction = Persistence.transactions[indexPath.row]
+        let transaction = StoreDebugConstants.transactions[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         cell.textLabel?.text = transaction.payment.productIdentifier
         let detail = "id: \(transaction.transactionIdentifier!), date: \(DateFormatter.short(transaction.transactionDate!))"

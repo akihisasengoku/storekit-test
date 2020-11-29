@@ -38,8 +38,8 @@ class ViewController: UIViewController {
 
     var products: [SKProduct] = []
     var purchaseState: StorePaymentTransactionState?
-    let productsGateway = StoreProductsGateway()
-    let purchaseProcessor = StoreTransactionProcessor.shared
+    let productsRequest = StoreProductsRequest()
+    let paymentManager = StorePaymentManager.shared
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        purchaseProcessor.resumeUnfinishedTransactions()
+        paymentManager.resumeUnfinishedTransactions()
         tableView.reloadData()
     }
 
@@ -85,7 +85,13 @@ class ViewController: UIViewController {
 
 extension ViewController {
     func fetchProducts() {
-        productsGateway.fetchProducts { [weak self] response in
+        let productIdentifiers = [
+            "com.ameba.consumable1",
+            "com.ameba.consumable2",
+            "com.ameba.consumable3"
+        ]
+
+        productsRequest.fetchProducts(identifiers: productIdentifiers) { [weak self] response in
             DispatchQueue.main.async {
                 switch response {
                 case .failure(let error):
@@ -101,7 +107,7 @@ extension ViewController {
 
 extension ViewController {
     func purchase(product: SKProduct) {
-        purchaseProcessor.purchase(product: product) { [weak self] result in
+        paymentManager.purchase(product: product) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -181,7 +187,7 @@ extension ViewController: UITableViewDelegate {
             StoreDebugConstants.isResponseReceivabled.toggle()
             tableView.reloadData()
         case .actions:
-            purchaseProcessor.resumeUnfinishedTransactions()
+            paymentManager.resumeUnfinishedTransactions()
         default:
             break
         }

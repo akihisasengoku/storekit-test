@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        StoreTransactionProcessor.shared.resumeUnfinishedTransactions()
+        StorePaymentManager.shared.resumeUnfinishedTransactions()
     }
 }
 

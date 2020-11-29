@@ -1,5 +1,5 @@
 //
-//  StorePaymentPurchaseGateway.swift
+//  StorePaymentTransactionObserver.swift
 //  StoreKitDemo
 //
 //  Created by 仙石 晃久 on 2020/11/23.
@@ -7,58 +7,72 @@
 
 import StoreKit
 
-final class StorePaymentPurchaseObserver: NSObject {
+protocol StorePaymentTransactionObserverProtocol: AnyObject {
 
+}
+
+final class StorePaymentTransactionObserver: NSObject, StorePaymentTransactionObserverProtocol {
     private let paymentQueue: SKPaymentQueue
 
-    private var completion: ((Result<StorePaymentTransactionState, StorePaymentError>) -> Void)?
+    private var eventHandler: ((Result<StorePaymentTransactionState, StorePaymentError>) -> Void)?
     private var product: SKProduct?
 
-    init(paymentQueue: SKPaymentQueue) {
+    init(_ paymentQueue: SKPaymentQueue) {
         self.paymentQueue = paymentQueue
         super.init()
     }
 
     func purchase(product: SKProduct, completion: @escaping ((Result<StorePaymentTransactionState, StorePaymentError>) -> Void)) {
-        self.completion = completion
         self.product = product
+        self.eventHandler = completion
 
         let payment = SKMutablePayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
+
+    func observe() {
+        paymentQueue.add(self)
+    }
+
+    func completeObservation() {
+        paymentQueue.remove(self)
+    }
 }
 
-extension StorePaymentPurchaseObserver: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-
+extension StorePaymentTransactionObserver: SKPaymentTransactionObserver {
+    func paymentQueue(_: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         guard let transaction = transactions.first(where: { $0.payment.productIdentifier == product?.productIdentifier }) else {
-            completion?(.failure(StorePaymentError.notFoundItem))
+            eventHandler?(.failure(StorePaymentError.notFoundItem))
             return
         }
 
         switch transaction.transactionState {
         case .purchasing:
-            completion?(.success(.purchasing))
+            eventHandler?(.success(.purchasing))
 
         case .purchased:
-            completion?(.success(.purchased(transaction)))
+            eventHandler?(.success(.purchased(transaction)))
 
         case .failed where (transaction.error as? SKError)?.code == .paymentCancelled:
             // Only display errors whose code is different from paymentCancelled.
             // - SeeAlso: https://developer.apple.com/documentation/storekit/in-app_purchase/offering_completing_and_restoring_in-app_purchases
             paymentQueue.finishTransaction(transaction)
-            completion?(.success(.cancelled))
+            eventHandler?(.success(.cancelled))
 
         case .failed:
             paymentQueue.finishTransaction(transaction)
             let error: StorePaymentError = transaction.error.map { .appStoreTransactionFailed($0) } ?? .unknown
-            completion?(.failure(error))
+            eventHandler?(.failure(error))
 
         case .deferred:
-            completion?(.success(.deferred))
+            eventHandler?(.success(.deferred))
 
         default:
-            break
+            eventHandler?(.success(.unknown))
         }
+    }
+
+    func paymentQueue(_: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+        eventHandler?(.success(.removedTransactions))
     }
 }
